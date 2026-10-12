@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:8080
+@apiKey = local-development-key
+
+### Health check (public)
+GET {{baseUrl}}/actuator/health
+
+### Create a product document
+POST {{baseUrl}}/api/v1/documents
+X-API-Key: {{apiKey}}
+Content-Type: application/json
+
+{
+  "productCode": "EDGE-100",
+  "name": "Edge Switch Installation Guide",
+  "description": "Installation and safety documentation for the EDGE-100 switch"
+}
+
+### Search product documents
+GET {{baseUrl}}/api/v1/documents?query=edge&page=0&size=20
+X-API-Key: {{apiKey}}
+
+### Get a product document (replace the UUID)
+GET {{baseUrl}}/api/v1/documents/00000000-0000-0000-0000-000000000000
+X-API-Key: {{apiKey}}
+
+### Add an immutable version (replace the UUID)
+POST {{baseUrl}}/api/v1/documents/00000000-0000-0000-0000-000000000000/versions
+X-API-Key: {{apiKey}}
+Content-Type: application/json
+
+{
+  "storageKey": "products/EDGE-100/install-guide-v1.pdf",
+  "checksum": "0b7d9b15e9b65f9e1494e1f5d90b1b962c00dd794d5ee4b7c686b95a44bc80d5",
+  "contentType": "application/pdf",
+  "sizeBytes": 84512,
+  "createdBy": "sharma.tanmay4002@gmail.com"
+}
+
+### List version history (replace the UUID)
+GET {{baseUrl}}/api/v1/documents/00000000-0000-0000-0000-000000000000/versions
+X-API-Key: {{apiKey}}
