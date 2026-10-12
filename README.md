@@ -1,6 +1,6 @@
-# DesignLedger — Product Document Versioning API
+# DocuTrack — Product Document Versioning API
 
-DesignLedger is a cloud-ready REST API built with Java 17 and Spring Boot for managing product-document metadata and tracking file-version history. It combines MySQL persistence, Redis caching, API-key authentication, optimistic concurrency control, database migrations, automated testing, and application monitoring.
+DocuTrack is a cloud-ready REST API built with Java 17 and Spring Boot for managing product-document metadata and tracking file-version history. It combines MySQL persistence, Redis caching, API-key authentication, optimistic concurrency control, database migrations, automated testing, and application monitoring.
 
 The project demonstrates how backend services can manage product documentation while preserving version history and preventing conflicting updates.
 
@@ -27,11 +27,11 @@ Product documentation such as technical specifications, installation manuals, en
 
 Overwriting documents without retaining previous versions can make auditing, troubleshooting, and rollback difficult.
 
-DesignLedger addresses this problem by separating product-document metadata from version records. It provides API endpoints for creating, searching, updating, and retrieving documents, along with operations for recording and retrieving file-version history.
+DocuTrack addresses this problem by separating product-document metadata from version records. It provides API endpoints for creating, searching, updating, and retrieving documents, along with operations for recording and retrieving file-version history.
 
 Each version record can contain a storage key, SHA-256 checksum, content type, file size, and version number. The actual binary file can be stored in an external object-storage service when such an integration is configured.
 
-**Example use case:** A company updates the installation manual for a network switch. DesignLedger can maintain the document's metadata and associate successive file versions with that document, allowing clients to retrieve its version history.
+**Example use case:** A company updates the installation manual for a network switch. DocuTrack can maintain the document's metadata and associate successive file versions with that document, allowing clients to retrieve its version history.
 
 ## Key Features
 
@@ -104,11 +104,11 @@ For running the application outside Docker, also install Java 17 and Maven 3.9 o
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/DesignLedger.git
-cd DesignLedger
+git clone https://github.com/YOUR-USERNAME/DocuTrack.git
+cd DocuTrack
 ```
 
-Replace `YOUR-USERNAME/DesignLedger` with the actual repository URL.
+Replace `YOUR-USERNAME/DocuTrack` with the actual repository URL.
 
 ### 2. Configure environment variables
 
@@ -131,8 +131,8 @@ Open `.env` and configure the database credentials and API key required by your 
 Example variable names:
 
 ```dotenv
-MYSQL_DATABASE=designledger
-MYSQL_USER=designledger
+MYSQL_DATABASE=DocuTrack
+MYSQL_USER=DocuTrack
 MYSQL_PASSWORD=replace-with-a-strong-password
 MYSQL_ROOT_PASSWORD=replace-with-a-strong-root-password
 API_KEY=replace-with-a-long-random-secret
@@ -388,7 +388,7 @@ This architecture is a deployment design, not evidence of a currently provisione
 ## Project Structure
 
 ```text
-DesignLedger/
+DocuTrack/
 ├── .github/
 │   ├── workflows/
 │   └── ...
@@ -398,7 +398,7 @@ DesignLedger/
 │   └── prometheus.yml
 ├── src/
 │   ├── main/
-│   │   ├── java/com/tanmaysharma/designledger/
+│   │   ├── java/com/tanmaysharma/DocuTrack/
 │   │   │   ├── api/
 │   │   │   ├── config/
 │   │   │   ├── domain/
@@ -437,7 +437,7 @@ Potential next steps include:
 
 ## Resume Description
 
-**DesignLedger — Product Document Versioning API**
+**DocuTrack — Product Document Versioning API**
 
 - Developed REST APIs using Java 17 and Spring Boot for product-document management, search, and file-version history.
 - Implemented MySQL persistence, Flyway migrations, Redis caching, optimistic concurrency control, API-key authentication, and structured exception handling.
